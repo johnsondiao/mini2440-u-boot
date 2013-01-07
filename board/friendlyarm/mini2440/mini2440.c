@@ -89,7 +89,7 @@ int board_init(void)
 
 	/* adress of boot parameters */
 	gd->bd->bi_boot_params = CONFIG_BOOT_PARAM_ADDR;
-
+	puts("in board_init cddiao \n");
 	return 0;
 }
 

@@ -21,8 +21,8 @@
 # MA 02111-1307 USA
 #
 
-CROSS_COMPILE ?= arm-linux-
-
+#CROSS_COMPILE ?= arm-linux-
+CROSS_COMPILE ?=/usr/bin/CodeSourcery/Sourcery_CodeBench_Lite_for_ARM_EABI/bin/arm-none-eabi-
 ifndef CONFIG_STANDALONE_LOAD_ADDR
 ifeq ($(SOC),omap3)
 CONFIG_STANDALONE_LOAD_ADDR = 0x80300000

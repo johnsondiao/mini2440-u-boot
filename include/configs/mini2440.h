@@ -38,6 +38,7 @@
 #define CONFIG_SYS_TEXT_BASE 0x0
 #define CONFIG_S3C2440_GPIO
 
+
 /*
  * High Level Configuration Options
  */
