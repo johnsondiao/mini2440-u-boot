@@ -2286,18 +2286,14 @@ unsigned long flash_init (void)
 	char s[64];
 	getenv_f("unlock", s, sizeof(s));
 #endif
-	puts("in flash_init \n");
 	/* Init: no FLASHes known */
 	for (i = 0; i < CONFIG_SYS_MAX_FLASH_BANKS; ++i) {
 		flash_info[i].flash_id = FLASH_UNKNOWN;
-		puts(" 1 ");
 		/* Optionally write flash configuration register */
 		cfi_flash_set_config_reg(cfi_flash_bank_addr(i),
 					 cfi_flash_config_reg(i));
-        puts(" 2 ");
 		if (!flash_detect_legacy(cfi_flash_bank_addr(i), i))
 			flash_get_size(cfi_flash_bank_addr(i), i);
-		puts(" 3 ");
 		size += flash_info[i].size;
 		if (flash_info[i].flash_id == FLASH_UNKNOWN) {
 #ifndef CONFIG_SYS_FLASH_QUIET_TEST
@@ -2305,7 +2301,6 @@ unsigned long flash_init (void)
 				"- Size = 0x%08lx = %ld MB\n",
 				i+1, flash_info[i].size,
 				flash_info[i].size >> 20);
-			puts(" 4 ");
 #endif /* CONFIG_SYS_FLASH_QUIET_TEST */
 		}
 #ifdef CONFIG_SYS_FLASH_PROTECTION
@@ -2318,7 +2313,6 @@ unsigned long flash_init (void)
 			 * and the environment variable "unlock" is
 			 * set to "yes".
 			 */
-			 puts(" 5 ");
 			if (flash_info[i].legacy_unlock) {
 				int k;
 
@@ -2345,7 +2339,6 @@ unsigned long flash_init (void)
 				 */
 				for (k = 1; k < flash_info[i].sector_count; k++)
 					flash_info[i].protect[k] = 0;
-				puts(" 6 ");
 			} else {
 				/*
 				 * No legancy unlocking -> unlock all sectors
@@ -2355,17 +2348,14 @@ unsigned long flash_init (void)
 					       flash_info[i].start[0]
 					       + flash_info[i].size - 1,
 					       &flash_info[i]);
-				puts(" 7 ");
 			}
 		}
 #endif /* CONFIG_SYS_FLASH_PROTECTION */
 	}
 
 	flash_protect_default();
-	puts(" 8 ");
 #ifdef CONFIG_FLASH_CFI_MTD
 	cfi_mtd_init();
 #endif
-	puts(" 9 ");
 	return (size);
 }
