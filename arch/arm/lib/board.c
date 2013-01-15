@@ -535,6 +535,7 @@ void board_init_r(gd_t *id, ulong dest_addr)
 	power_init_board();
 
 //#if !defined(CONFIG_SYS_NO_FLASH)
+// remember to config nor flash cddiao
 #if 0
 	puts("Flash: ");
 

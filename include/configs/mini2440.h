@@ -37,6 +37,9 @@
 
 #define CONFIG_SYS_TEXT_BASE 0x0
 #define CONFIG_S3C2440_GPIO
+#define CONFIG_NAND_S3C2440
+//#define CONFIG_S3C2440_NAND_HWECC
+//#define CONFIG_SYS_NAND_ECCSIZE  512
 
 
 /*
@@ -176,6 +179,14 @@
 #define CONFIG_ENV_ADDR		(CONFIG_SYS_FLASH_BASE + CONFIG_MY_ENV_OFFSET)
 /* 16k Total Size of Environment Sector */
 #define CONFIG_ENV_SIZE		0x4000
+
+/*
+ * Config for NAND flash
+ */
+
+#define CONFIG_CMD_NAND
+#define CONFIG_SYS_MAX_NAND_DEVICE  1
+#define CONFIG_SYS_NAND_BASE 0x4e000000
 
 /* ATAG configuration */
 #define CONFIG_INITRD_TAG
