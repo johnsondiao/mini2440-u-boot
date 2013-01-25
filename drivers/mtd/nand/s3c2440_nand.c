@@ -30,7 +30,7 @@
 #include <asm/io.h>
 
 
-#define S3C2440_NFCONF_INITECC     (1<<4)
+#define S3C2440_NFCONT_INITECC     (1<<4)
 #define S3C2440_NFCONT_nFCE        (1<<1)
 #define S3C2440_NFCONT_EN	0x01
 
@@ -106,16 +106,16 @@ void s3c2440_nand_enable_hwecc(struct mtd_info *mtd, int mode)
 {
 	struct s3c2440_nand *nand = s3c2440_get_base_nand();
 	debug("s3c2440_nand_enable_hwecc(%p, %d)\n", mtd, mode);
-	writel(readl(&nand->nfconf) | S3C2440_NFCONF_INITECC, &nand->nfconf);
+	writel(readl(&nand->nfcont) | S3C2440_NFCONT_INITECC, &nand->nfcont);
 }
 
 static int s3c2440_nand_calculate_ecc(struct mtd_info *mtd, const u_char *dat,
 				      u_char *ecc_code)
 {
 	struct s3c2440_nand *nand = s3c2440_get_base_nand();
-	ecc_code[0] = readb(&nand->nfecc);
-	ecc_code[1] = readb(&nand->nfecc + 1);
-	ecc_code[2] = readb(&nand->nfecc + 2);
+	ecc_code[0] = readb(&nand->nfeccd0);
+	ecc_code[1] = readb(&nand->nfeccd1);
+	ecc_code[2] = readb(&nand->nfeccd);
 	debug("s3c2440_nand_calculate_hwecc(%p,): 0x%02x 0x%02x 0x%02x\n",
 	       mtd , ecc_code[0], ecc_code[1], ecc_code[2]);
 
