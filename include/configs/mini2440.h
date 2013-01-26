@@ -197,4 +197,13 @@
 #define CONFIG_CMDLINE_EDITING
 #define CONFIG_AUTO_COMPLETE
 
+
+#define CONFIG_EXTRA_ENV_SETTINGS      \
+			"bootdelay=3\0"				\
+			"netmask=255.255.255.0\0"		\
+			"serverip=192.168.1.1\0"		\
+			"ipaddr=192.168.1.2\0"			\
+			"MAC=00:00:00:00\0"
+
+
 #endif	/* __CONFIG_H */
