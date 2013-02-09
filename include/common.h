@@ -310,6 +310,7 @@ extern ulong monitor_flash_len;
 int mac_read_from_eeprom(void);
 extern u8 _binary_dt_dtb_start[];	/* embedded device tree blob */
 int set_cpu_clk_info(void);
+void colourd_LED_init(void);
 
 /* common/flash.c */
 void flash_perror (int);
